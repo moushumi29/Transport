@@ -24,7 +24,9 @@ export default async function RootLayout({
       <body
         className={`antialiased`}
       >
-        {children}
+        <Layout>
+          {children}
+        </Layout>
       </body>
     </html>
   );
