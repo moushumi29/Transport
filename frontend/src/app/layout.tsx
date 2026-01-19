@@ -2,6 +2,7 @@ import { headers } from "next/headers";
 import "./globals.scss";
 import AuthLayout from "@src/layouts/auth";
 import DefaultLayout from "@src/layouts/default";
+import ReduxProvider from "./providers";
 
 
 
@@ -24,9 +25,11 @@ export default async function RootLayout({
       <body
         className={`antialiased`}
       >
-        <Layout>
+       <ReduxProvider>
+         <Layout>
           {children}
         </Layout>
+       </ReduxProvider>
       </body>
     </html>
   );
