@@ -5,6 +5,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const connectDB = require('./db/db');
 const userRoutes = require('./routes/user.routes');
+const builtyRoutes = require('./routes/builty.routes');
 
 connectDB();
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/users', userRoutes);
+app.use('/builty', builtyRoutes);
 
 
 module.exports = app;
