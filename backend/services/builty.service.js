@@ -1,4 +1,5 @@
 const BuiltyModel = require("../models/builty.model");
+const VehicleService = require('./vehicle.service');
 
 module.exports.createBuiltyService = async ({
   builty_no,
@@ -54,6 +55,13 @@ module.exports.createBuiltyService = async ({
     status: "CREATED",
   });
 
+   await VehicleService.upsertVehicleFromBuilty({
+    vehicle_no,
+    driver,
+    owner,
+    builty_id: builty._id,
+  });
+
   return builty;
 };
 
@@ -73,9 +81,12 @@ module.exports.getBuiltyListService = async ({ page = 1, limit = 10 }) => {
   return {
     message: "Builty list fetched successfully",
     data,
-    total,
-    page: pageNumber,
-    limit: pageLimit,
+     pagination: {
+      totalItems: total,
+      currentPage: Number(pageNumber),
+      totalPages: Math.ceil(total / pageLimit),
+      pageSize: Number(pageLimit),
+    },
   };
 };
 
