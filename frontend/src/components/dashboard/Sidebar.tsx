@@ -9,7 +9,7 @@ import {
   LogOut,
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 
 const SidebarItem = ({
   icon,
@@ -41,6 +41,7 @@ const SidebarItem = ({
 
 
 const Sidebar = () => {
+  const router = useRouter();
   return (
     <div className=' w-64 bg-white border-r border-gray-200 shadow-md flex flex-col'>
       <nav className="flex-1 px-4 space-y-3 py-6">
@@ -52,7 +53,8 @@ const Sidebar = () => {
 
       {/* Logout */}
       <div className="px-4 py-12 ">
-        <button className="flex items-center gap-3 text-green-600 hover:bg-green-50 hover:text-green-700 transition w-full px-3 py-2 rounded-lg">
+        <button className="flex items-center gap-3 text-green-600 hover:bg-green-50 hover:text-green-700 transition w-full px-3 py-2 rounded-lg"
+        onClick={() => router.push('/login')}>
           <LogOut size={24} />
           <span className="font-medium">Logout</span>
         </button>

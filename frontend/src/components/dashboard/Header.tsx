@@ -1,6 +1,8 @@
-import { ChevronDown, TruckElectric } from 'lucide-react'
-import React from 'react'
-import { Baloo_2 } from 'next/font/google'
+"use client";
+import { ChevronDown, TruckElectric } from 'lucide-react';
+import { Baloo_2 } from 'next/font/google';
+import { useAppSelector } from '@src/store/hooks';
+import { selectUserInfo } from '@src/store/slices/authSlice';
 
 const baloo2 = Baloo_2({
     subsets: ['latin'],
@@ -8,6 +10,7 @@ const baloo2 = Baloo_2({
 })
 
 const Header = () => {
+    const userInfo = useAppSelector(selectUserInfo);
     return (
         <div className='flex justify-between px-8 py-4 border-b border-gray-200 items-center shadow-md'>
             <div className={`${baloo2.className} text-green-500 text-3xl flex items-center gap-1 font-semibold`}>
@@ -25,7 +28,7 @@ const Header = () => {
 
 
                 {/* User Name */}
-                <span className="text-zinc-500 font-semibold">Douglas Steele</span>
+                <span className="text-zinc-500 font-semibold">{userInfo?.fullName?.firstName + " " + userInfo?.fullName?.lastName}</span>
 
                 {/* Dropdown Icon */}
                 <ChevronDown className="w-4 h-4 text-gray-500" />

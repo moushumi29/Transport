@@ -7,12 +7,17 @@ import DashboardContent from '@src/components/dashboard/DashboardContent';
 
 const DashboardPage = () => {
     return (
-        <>
-            <DashboardContent />
-        </>
+         <div className='h-screen flex flex-col overflow-hidden'>
+            <Header />
+            <div className='flex flex-1 overflow-hidden'>
+                <Sidebar />
+                <div className='flex-1 bg-gray-50 p-6 overflow-auto'>
+                   <DashboardContent />
+                </div>
+            </div>
+        </div>
     )
 }
 
-DashboardPage.layout = 'DefaultLayout';
 
 export default DashboardPage
