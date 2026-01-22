@@ -28,11 +28,11 @@ module.exports.createBuiltyService = async ({
   }
 
   // 🔒 Server-side calculation (IMPORTANT)
-  const freight =
-    goods.weight * goods.rate +
-    (charges.other_charges || 0);
 
-  const balance = freight - (charges.advance || 0);
+  const freight = Number(charges.freight) || 0;
+const advance = Number(charges.advance) || 0;
+const otherCharges = Number(charges.other_charges) || 0;
+const balance = freight + otherCharges - advance;
 
   // ✅ Create builty
   const builty = await BuiltyModel.create({
@@ -47,7 +47,6 @@ module.exports.createBuiltyService = async ({
     },
     charges: {
       ...charges,
-      freight,
       balance,
     },
     driver,

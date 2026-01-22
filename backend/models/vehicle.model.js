@@ -5,7 +5,7 @@ const vehicleSchema = new mongoose.Schema({
     driver: {
         name: {type: String, required: true},
         phone: {type: String, required: true},
-        license_no: {type: String, required: true, unique: true}
+        license_no: {type: String, required: true}
     },
     owner: {
         name: {type: String, required: true},

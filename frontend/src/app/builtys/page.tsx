@@ -8,15 +8,15 @@ const BuiltyPage = () => {
   return (
 
     <div className='h-screen flex flex-col overflow-hidden'>
-            <Header />
-            <div className='flex flex-1 overflow-hidden'>
-                <Sidebar />
-                <div className='flex-1 bg-gray-50 p-6 overflow-auto'>
-                   <h3 className='text-xl mb-4 text-green-600 font-semibold'>Builty List</h3>
-      <BuiltyCard />
-                </div>
-            </div>
+      <Header />
+      <div className='flex flex-1 overflow-hidden'>
+        <Sidebar />
+        <div className='flex-1 bg-gray-50 p-6 overflow-auto'>
+          <h3 className='text-xl mb-4 text-green-600 font-semibold'>Builty List</h3>
+          <BuiltyCard />
         </div>
+      </div>
+    </div>
   )
 }
 

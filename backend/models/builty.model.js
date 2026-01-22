@@ -41,6 +41,7 @@ const builtySchema = new mongoose.Schema({
     owner: {
         name: { type: String, required: true },
         phone: { type: String },
+        address: { type: String }
     },
     status: {
       type: String,

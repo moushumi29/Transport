@@ -7,6 +7,7 @@ import defaultVehicleImg2 from "@src/assests/images/truck-2.png"
 import AddBuilty from '../modals/AddBuilty';
 import { setShowAddBuiltyModal } from '@src/store/slices/builtySlice';
 import { useDispatch } from 'react-redux';
+import { useBuiltyHandler } from '@src/mixins/builty';
 
 interface VehicleCardProps {
   image: string;
@@ -40,6 +41,7 @@ const VehicleCard = ({
 }: VehicleCardProps) => {
 
   const dispatch = useDispatch();
+  const { openAddBuiltyModal } = useBuiltyHandler();
   return (
     <>
       <div className="flex items-center justify-between p-6 bg-white border border-gray-200 rounded-md  shadow-sm hover:border-green-500 hover:shadow-md transition mb-6">
@@ -88,7 +90,7 @@ const VehicleCard = ({
         {/* Right */}
         <div className="text-right">
           <button className='bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition cursor-pointer shadow-sm'
-            onClick={() => dispatch(setShowAddBuiltyModal(true))}>Create Builty</button>
+            onClick={openAddBuiltyModal}>Create Builty</button>
 
           {/* {badge && (
           <span

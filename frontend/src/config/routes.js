@@ -11,4 +11,8 @@ export const events = {
 		method: 'POST',
 		url: `${process.env.NEXT_PUBLIC_BASE_URL}/builty/create`,
 	},
+	PERFORM_GET_BUILTY_LIST: {
+		method: 'GET',
+		url: `${process.env.NEXT_PUBLIC_BASE_URL}/builty/list`,
+	},
 }

@@ -2,14 +2,15 @@ import React from 'react';
 import Image from 'next/image';
 import builtyImg from '@src/assests/images/builty-img.png';
 import VehicleCard from '../common/VehicleCard';
-import { setShowAddBuiltyModal } from '@src/store/slices/builtySlice';
 import { useAppDispatch, useAppSelector } from '@src/store/hooks';
 import { selectUserInfo } from '@src/store/slices/authSlice';
+import { useBuiltyHandler } from '@src/mixins/builty';
 
 
 const DashboardContent = () => {
     const dispatch = useAppDispatch();
     const userInfo = useAppSelector(selectUserInfo);
+    const { openAddBuiltyModal } = useBuiltyHandler();
 
     return (
         <>
@@ -28,7 +29,7 @@ const DashboardContent = () => {
                 <p className='text-gray-500 w-4/5 mt-2'>Easily create new bilties, follow your shipments, and manage your transport details without any hassle. Everything you need is right at your fingertips.</p>
                 <div className='flex gap-4 items-center mt-6'>
                     <button className='bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition cursor-pointer shadow-sm'
-                     onClick={() => dispatch(setShowAddBuiltyModal(true))}>Create Builty</button>
+                     onClick={openAddBuiltyModal}>Create Builty</button>
                     {/* <button className='bg-transparent text-green-600 font-semibold border-[2px] border-green-600 px-4 py-2 rounded-lg hover:bg-green-100 transition cursor-pointer'>Add a vehicle</button> */}
                 </div>
             </div>
